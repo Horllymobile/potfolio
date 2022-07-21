@@ -2,11 +2,16 @@
     flex-grow: 9;
     margin: 0em auto auto;
     display: flex;
+    gap: 100px;
     flex-direction: row;
 }
 
 .expriences_education {
     margin: 8em 0 auto;
+}
+
+.img {
+    border-radius: 10px;
 }
 
 .tabs {
@@ -40,7 +45,9 @@
     border-radius: 10px;
 }
 
-.user_details {}
+.user_details {
+    margin-top: 50px;
+}
 
 #education {
     cursor: pointer;
