@@ -17,7 +17,7 @@ education.addEventListener('click', (e) => {
     experienceCss.style.display = 'none';
     educationCss.style.display = 'block';
 
-    console.log(e.target);
+    // console.log(e.target);
 });
 
 experience.addEventListener('click', (e) => {
