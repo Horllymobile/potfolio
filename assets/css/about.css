@@ -1,171 +1,164 @@
 .about_page {
-    flex-grow: 9;
-    margin: 0em auto auto;
-    display: flex;
-    gap: 100px;
-    flex-direction: row;
+  flex-grow: 9;
+  margin: 0em auto auto;
+  display: flex;
+  gap: 100px;
+  flex-direction: row;
 }
 
 .expriences_education {
-    margin: 8em 0 auto;
+  margin: 8em 0 auto;
 }
 
 .img {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .tabs {
-    width: 300px;
-    height: 60px;
-    margin: 0 auto auto;
-    background: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
+  width: 300px;
+  height: 60px;
+  margin: 0 auto auto;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
 }
 
 .tabs .tab {
-    text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .tabs .tab h3 {
-    text-align: center;
+  text-align: center;
 }
 
-
-
 .tabs .tab-active {
-    background-color: black;
-    color: white;
-    transition: 500ms;
-    border-radius: 10px;
+  background-color: black;
+  color: white;
+  transition: 500ms;
+  border-radius: 10px;
 }
 
 .user_details {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 #education {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #experience {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .experience {
-    height: 500px;
-    margin: 20px auto;
-    animation: slow duration ease-in 0.5s normal forwards;
-    overflow-y: scroll;
+  height: 500px;
+  margin: 20px auto;
+  animation: slow duration ease-in 0.5s normal forwards;
+  overflow-y: scroll;
 }
 
 .education {
-    height: 500px;
-    margin: 20px auto;
-    visibility: hidden;
-    animation: slow duration ease-in 0.5s normal forwards;
-    overflow-y: scroll;
+  height: 500px;
+  margin: 20px auto;
+  visibility: hidden;
+  animation: slow duration ease-in 0.5s normal forwards;
+  overflow-y: scroll;
 }
 
 .role-box {
-    color: white;
-    width: 500px;
-    border: 1px solid white;
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 5px;
+  color: white;
+  width: 500px;
+  border: 1px solid white;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-
 .role-box .role-title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .role-box div h3 {
-    font-size: 1em;
+  font-size: 1em;
 }
 
 .education-box {
-    color: white;
-    width: 500px;
-    border: 1px solid white;
-    margin-bottom: 15px;
-    padding: 5px 10px;
-    border-radius: 5px;
+  color: white;
+  width: 500px;
+  border: 1px solid white;
+  margin-bottom: 15px;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
-
 
 .education-box {
-
 }
-
 
 @keyframes slow {
-    0% {
-        transition: 1s;
-        transform: rotate(360deg);
-    }
+  0% {
+    transition: 1s;
+    transform: rotate(360deg);
+  }
 
-    50% {
-        transition: 1s;
-        transform: translateY(200px);
-    }
+  50% {
+    transition: 1s;
+    transform: translateY(200px);
+  }
 
-    100% {
-        transition: 0s;
-        transform: rotate(0deg);
-    }
+  100% {
+    transition: 0s;
+    transform: rotate(0deg);
+  }
 }
 
 @media screen and (max-width: 768px) {
+  body {
+    width: 100%;
+  }
 
-    body {
-        width: 100%;
-    }
+  .expriences_education {
+    width: 90% !important;
+    margin: 4em 0 auto;
+  }
 
-    .expriences_education {
-        width: 90% !important;
-        margin: 4em 0 auto;
-    }
+  .tabs {
+    position: relative;
+    /* width: 100% !important; */
+    height: 60px;
+  }
 
-    .tabs {
-        position: relative;
-        /* width: 100% !important; */
-        height: 60px;
-    }
+  .about_page {
+    width: 100%;
+    flex-grow: 9;
+    margin: 2em auto auto;
+    /* flex-direction: column; */
+  }
 
-    .about_page {
-        width: 100%;
-        flex-grow: 9;
-        margin: 2em auto auto;
-        /* flex-direction: column; */
-    }
+  .experience {
+    padding: 10px;
+    width: 100%;
+    overflow-y: visible !important;
+  }
 
-    .experience {
-        padding: 10px;
-        width: 100%;
-        overflow-y: visible !important;
-    }
-    
-    .education {
-        padding: 10px;
-        width: 100%;
-        overflow-y: visible !important;
-    }
-    
-    .role-box {
-        width: 100% !important;
-    }
-    
-    .education-box {
-        width: 100%;
-    }
+  .education {
+    padding: 10px;
+    width: 100%;
+    overflow-y: visible !important;
+  }
+
+  .role-box {
+    width: 100% !important;
+  }
+
+  .education-box {
+    width: 100%;
+  }
 }
