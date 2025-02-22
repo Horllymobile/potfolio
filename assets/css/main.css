@@ -6,6 +6,7 @@
 body {
   font-family: "Sigmar", cursive;
   padding: 0;
+  width: 100%;
   margin: 0;
   box-sizing: border-box;
   background: #000000;
@@ -35,9 +36,20 @@ body {
   margin: 0em auto auto;
 }
 
+.profile {
+  width: 100;
+
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  gap: 50px;
+  flex-direction: row;
+}
+
 .profile-image {
   width: 250px;
-  height: 200px;
+  border: 3px solid white;
+  height: 250px;
   border-radius: 50%;
 }
 
@@ -210,9 +222,40 @@ a:hover i {
 
 @media screen and (max-width: 768px) {
   .main {
+    width: 100%;
     flex-direction: column;
-    justify-self: start;
-    /* align-items: center; */
+    justify-items: center;
+    align-items: center;
+  }
+
+  body {
+    margin-bottom: 50px;
+  }
+
+  .profile {
+    width: 100;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .intro h1 {
+    text-align: center;
+  }
+  .intro h2 {
+    text-align: center;
+  }
+  .side {
+    width: 100%;
+    flex-grow: none;
+  }
+
+  .my-image {
+    width: 100;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .side_menu {
@@ -223,14 +266,14 @@ a:hover i {
     align-items: center;
     margin: 0 auto auto;
     width: 100%;
-    background: #605959;
+    background: #000;
   }
 
   .skills_continainer {
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    margin: 1em auto 10px auto;
+    margin: 0 auto auto;
     gap: 10px;
   }
 
@@ -238,7 +281,8 @@ a:hover i {
     display: grid;
     justify-content: center;
     grid-template-columns: 50px 50px 50px;
-    gap: 50px;
+    column-gap: 80px;
+    row-gap: 20px;
     grid-template-rows: 50px 50px;
   }
 
@@ -246,6 +290,10 @@ a:hover i {
     position: relative;
     display: inline-block;
     /* border-bottom: 1px dotted white; */
+  }
+
+  .menu-icon {
+    font-size: 16px;
   }
 
   .skill .tooltiptext {
@@ -265,14 +313,5 @@ a:hover i {
     opacity: 0;
     transition: opacity 0.3s;
     border: 1px solid #fff;
-  }
-  .my-image {
-    text-align: center;
-  }
-  .my-image img {
-    margin: 0 auto;
-    width: 90%;
-    text-align: center;
-    border-radius: 0.5rem;
   }
 }
