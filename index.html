@@ -143,6 +143,10 @@
     font-size:13.5px; color:#C9CCD3; padding-left:16px; position:relative; margin-bottom:6px;
   }
   .entry .body ul li::before{ content:'—'; position:absolute; left:0; color:var(--grey); }
+
+  .shot-link{ display:block; margin:14px 0 16px; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+  .shot{ display:block; width:100%; height:auto; filter:saturate(0.92) contrast(1.02); transition:transform .4s ease, filter .4s ease; }
+  .shot-link:hover .shot{ transform:scale(1.02); filter:saturate(1) contrast(1.05); }
   .entry .status{ text-align:right; }
   .badge{
     font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.06em;
@@ -255,6 +259,9 @@
         <div class="body">
           <h3>Biztack <span class="badge live">LIVE · PAID</span></h3>
           <div class="sub"><a href="https://biztack.com.ng" target="_blank" rel="noopener" style="border-bottom:1px solid rgba(47,168,154,0.4);">biztack.com.ng ↗</a> — Unified Business OS</div>
+          <a href="https://biztack.com.ng" target="_blank" rel="noopener" class="shot-link">
+            <img class="shot" src="https://biztack.com.ng/biztack-og.png" alt="Biztack product preview" loading="lazy">
+          </a>
           <p>Consolidated three standalone PWAs — InvoiceNG, BillNG, RetailNG — into one Next.js application on a single Supabase auth and database layer. First paying subscriber converted via Flutterwave.</p>
           <ul>
             <li>Tiered access controls, dynamic upgrade prompts, PWA offline caching</li>
@@ -270,6 +277,9 @@
         <div class="body">
           <h3>Sharpdine <span class="badge live">LIVE</span></h3>
           <div class="sub"><a href="https://www.sharpdine.com" target="_blank" rel="noopener" style="border-bottom:1px solid rgba(47,168,154,0.4);">sharpdine.com ↗</a> — AI-powered Restaurant Operating System</div>
+          <a href="https://www.sharpdine.com" target="_blank" rel="noopener" class="shot-link">
+            <img class="shot" src="https://www.sharpdine.com/assets/og-image.png" alt="Sharpdine product preview" loading="lazy">
+          </a>
           <p>Full stack for Lagos dining: marketing site, owner dashboard, and QR-based customer ordering, with an AI assistant for order and operations support.</p>
           <ul>
             <li>Sharp AI — Groq Llama 3.3 70B, confirmation-gated action flow</li>
