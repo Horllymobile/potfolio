@@ -1,201 +1,412 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horllymobile</title>
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abraham James — Full Stack Engineer & Founder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10141C;
+    --ink-2:#171D29;
+    --paper:#F4F1E8;
+    --amber:#E8A23D;
+    --teal:#2FA89A;
+    --grey:#8B92A1;
+    --white:#FAFAF7;
+    --line: rgba(244,241,232,0.12);
+    --radius: 3px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--white);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{ background:var(--amber); color:var(--ink); }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  h1,h2,h3{ font-family:'Space Grotesk', sans-serif; letter-spacing:-0.01em; }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:0 28px; }
+
+  /* ---------- nav ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(16,20,28,0.85); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:60px; }
+  nav .logo{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; letter-spacing:0.02em; }
+  nav .logo .ticker{ color:var(--teal); }
+  nav ul{ display:flex; gap:28px; list-style:none; }
+  nav ul li a{ font-size:13px; color:var(--grey); transition:color .2s; }
+  nav ul li a:hover{ color:var(--white); }
+  .nav-status{
+    display:flex; align-items:center; gap:6px; font-size:11px; color:var(--teal);
+  }
+  .dot{ width:6px; height:6px; border-radius:50%; background:var(--teal); animation:pulse 2s infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  @media (max-width:720px){ nav ul{ display:none; } }
+
+  /* ---------- hero ---------- */
+  header.hero{
+    padding:150px 0 80px;
+    position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  .ledger-id{
+    font-size:12px; color:var(--grey); letter-spacing:0.08em; text-transform:uppercase;
+    display:flex; gap:10px; align-items:center; margin-bottom:28px;
+  }
+  .ledger-id::before{ content:'§'; color:var(--amber); }
+
+  .hero h1{
+    font-size:clamp(40px, 7vw, 76px);
+    font-weight:700;
+    line-height:1.02;
+    margin-bottom:18px;
+  }
+  .hero h1 .accent{ color:var(--amber); }
+  .hero .role{
+    font-size:clamp(16px,2.4vw,22px);
+    color:var(--grey);
+    font-weight:400;
+    max-width:600px;
+    margin-bottom:36px;
+  }
+  .hero .role b{ color:var(--white); font-weight:500; }
+
+  .hero-stats{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .stat{
+    padding:18px 20px; border-right:1px solid var(--line);
+  }
+  .stat:last-child{ border-right:none; }
+  .stat .num{ font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:600; color:var(--amber); }
+  .stat .label{ font-size:11px; color:var(--grey); text-transform:uppercase; letter-spacing:0.05em; margin-top:4px; }
+  @media (max-width:600px){ .hero-stats{ grid-template-columns:1fr; } .stat{ border-right:none; border-bottom:1px solid var(--line);} .stat:last-child{border-bottom:none;} }
+
+  .hero-cta{ display:flex; gap:14px; margin-top:36px; flex-wrap:wrap; }
+  .btn{
+    font-family:'IBM Plex Mono',monospace; font-size:13px;
+    padding:12px 22px; border-radius:var(--radius);
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .2s, background .2s, border-color .2s;
+  }
+  .btn-primary{ background:var(--amber); color:var(--ink); font-weight:600; }
+  .btn-primary:hover{ transform:translateY(-2px); }
+  .btn-ghost{ border:1px solid var(--line); color:var(--white); }
+  .btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
+
+  /* ---------- section frame ---------- */
+  section{ padding:90px 0; border-bottom:1px solid var(--line); }
+  .section-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:44px; flex-wrap:wrap; gap:10px;}
+  .section-head .tag{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--teal); letter-spacing:0.08em; }
+  .section-head h2{ font-size:clamp(26px,4vw,36px); margin-top:6px; }
+  .section-head .count{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--grey); }
+
+  p.lede{ color:var(--grey); max-width:640px; font-size:16px; margin-bottom:10px; }
+
+  /* ---------- ledger rows (projects) ---------- */
+  .ledger{ display:flex; flex-direction:column; }
+  .entry{
+    border-top:1px solid var(--line);
+    padding:28px 0;
+    display:grid;
+    grid-template-columns:90px 1fr 140px;
+    gap:24px;
+    transition:background .25s;
+    opacity:0; transform:translateY(16px);
+  }
+  .entry.show{ opacity:1; transform:translateY(0); transition:opacity .6s ease, transform .6s ease, background .25s; }
+  .entry:hover{ background:rgba(244,241,232,0.03); }
+  .entry:last-child{ border-bottom:1px solid var(--line); }
+  .entry .when{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--grey); padding-top:4px; }
+  .entry .body h3{ font-size:21px; margin-bottom:4px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .entry .body .sub{ color:var(--teal); font-size:13px; margin-bottom:12px; font-family:'IBM Plex Mono',monospace; }
+  .entry .body p{ color:var(--grey); font-size:14.5px; max-width:540px; margin-bottom:10px;}
+  .entry .body ul{ list-style:none; padding:0; margin-top:10px; }
+  .entry .body ul li{
+    font-size:13.5px; color:#C9CCD3; padding-left:16px; position:relative; margin-bottom:6px;
+  }
+  .entry .body ul li::before{ content:'—'; position:absolute; left:0; color:var(--grey); }
+  .entry .status{ text-align:right; }
+  .badge{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.06em;
+    padding:4px 9px; border-radius:20px; display:inline-block;
+  }
+  .badge.live{ background:rgba(47,168,154,0.15); color:var(--teal); border:1px solid rgba(47,168,154,0.4); }
+  .badge.shipped{ background:rgba(232,162,61,0.15); color:var(--amber); border:1px solid rgba(232,162,61,0.4); }
+  @media (max-width:720px){
+    .entry{ grid-template-columns:1fr; gap:8px; }
+    .entry .status{ text-align:left; }
+  }
+
+  /* ---------- experience ---------- */
+  .exp-row{
+    border-top:1px solid var(--line);
+    padding:22px 0;
+    display:grid; grid-template-columns:170px 1fr;
+    gap:24px;
+    opacity:0; transform:translateY(16px);
+  }
+  .exp-row.show{ opacity:1; transform:translateY(0); transition:opacity .6s ease, transform .6s ease; }
+  .exp-row:last-child{ border-bottom:1px solid var(--line); }
+  .exp-row .dates{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--grey); padding-top:3px;}
+  .exp-row .role{ font-size:17px; font-weight:600; font-family:'Space Grotesk',sans-serif; }
+  .exp-row .co{ color:var(--teal); font-size:13px; font-family:'IBM Plex Mono',monospace; margin-bottom:10px; }
+  .exp-row p{ color:var(--grey); font-size:14px; max-width:560px; }
+  @media (max-width:600px){ .exp-row{ grid-template-columns:1fr; } }
+
+  /* ---------- skills ---------- */
+  .skill-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .skill-cell{ background:var(--ink); padding:22px 24px; }
+  .skill-cell .k{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--amber); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; }
+  .skill-cell .v{ font-size:14px; color:#D7D9DD; line-height:1.7; }
+  @media (max-width:600px){ .skill-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- footer ---------- */
+  footer{ padding:80px 0 50px; }
+  footer h2{ font-size:clamp(30px,5vw,52px); margin-bottom:18px; max-width:600px; }
+  footer .grey{ color:var(--grey); margin-bottom:36px; max-width:480px; }
+  .foot-links{ display:flex; gap:28px; flex-wrap:wrap; margin-bottom:60px; }
+  .foot-links a{ font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--white); border-bottom:1px solid var(--line); padding-bottom:4px; transition:border-color .2s, color .2s; }
+  .foot-links a:hover{ color:var(--amber); border-color:var(--amber); }
+  .foot-bottom{ display:flex; justify-content:space-between; font-size:11.5px; color:var(--grey); font-family:'IBM Plex Mono',monospace; flex-wrap:wrap; gap:10px; border-top:1px solid var(--line); padding-top:24px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    .entry, .exp-row{ opacity:1; transform:none; }
+  }
+
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+</style>
 </head>
-
 <body>
-    <main class="main">
-        <section class="side">
-            <div class="side_menu">
-                <div class="side_menu-item">
-                    <a href="./index.html" class="home active">
-                        <i class="fa-solid fa-house menu-icon"></i>
-                    </a>
-                </div>
-                <div class="side_menu-item">
-                    <a href="./about.html" class="about">
-                        <i class="fa-solid fa-user menu-icon"></i>
-                    </a>
-                </div>
-                <div class="side_menu-item">
-                    <a href="./files.html" class="files">
-                        <i class="fa-solid fa-file menu-icon"></i>
-                    </a>
-                </div>
-                <div class="side_menu-item">
-                    <a href="./projects.html" class="projects">
-                        <i class="fa-solid fa-mug-hot menu-icon"></i>
-                    </a>
-                </div>
-                <div class="side_menu-item">
-                    <a href="./contact.html" class="contact">
-                        <i class="fa-solid fa-envelope menu-icon"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-        <section class="main_page">
-            <div class="skills_continainer">
-                <div class="profile">
-                    <div class="profile-image">
-                        <img src="./assets/images/me.jpeg" width="250px" height="200px" class="profile-image">
-                    </div>
-                    <div class="my-3 intro flex flex-col gap-y-3">
-                        <h1>I'm Abraham Olamide James</h1>
-                        <h2 class="role">Software Developer</h2>
-                    </div>
-                </div>
-                <div class="skills">
-                    <h4 class="skill skill-1">
-                        JavaScript
-                        <span class="tooltiptext">
-                            <h5>JavaScript</h5>
-                            <p class="mt-3">JavaScript, is a programming language that is
-                                one of the core technologies of the World Wide Web.</p>
-                        </span>
-                    </h4>
-                    <h4 class="skill skill-2">Angular
-                        <span class="tooltiptext">
-                            <h5>Angular</h5>
-                            <p class="mt-3">Angular is a Framework for create web application, written in Typescript to
-                                succed
-                                AngularJs</p>
-                        </span>
-                    </h4>
-                    <h4 class="skill skill-3">HTML
-                        <span class="tooltiptext">
-                            <h5>HTML</h5>
-                            <p class="mt-3">
-                                HTML stands for Hypertext Markup Language this is the backbone of the every website.
-                                <!-- along with CSS and JavaScript we can buiild from Website to Web apps. -->
-                            </p>
-                        </span>
-                    </h4>
-                    <h4 class="skill skill-3">React
-                        <span class="tooltiptext">
-                            <h5>React</h5>
-                            <p class="mt-3">
-                                HTML stands for Hypertext Markup Language this is the backbone of the every website.
-                                <!-- along with CSS and JavaScript we can buiild from Website to Web apps. -->
-                            </p>
-                        </span>
-                    </h4>
-                    <h4 class="skill skill-4">Nodejs
-                        <span class="tooltiptext">
-                            <h5>Nodejs</h5>
-                            <p class="mt-3">Nodejs is basically a JavaScript library that enables you to run JavaScript
-                                without a
-                                browser.</p>
-                        </span>
-                    </h4>
-                    <h4 class="skill skill-5">TypeScript
-                        <span class="tooltiptext">
-                            <h5>TypeScript</h5>
-                            <p class="mt-3">TypeScript is a typed JavaScript, used for writing a bug free JavaScript.
-                            </p>
-                        </span>
-                    </h4>
-                    <h4 class="skill skill-6">CSS
-                        <span class="tooltiptext">
-                            <h5>CSS</h5>
-                            <p class="mt-3">CSS stands for Cascading Style Sheets is a style sheet language used for
-                                describing the
-                                presentation of a document written in a markup language such as HTML. </p>
-                        </span>
-                    </h4>
-                    <h4 class="skill skill-7">Ionic
-                        <span class="tooltiptext">
-                            <h5>Ionic</h5>
-                            <p class="mt-3">Ionic is a JavaScript framework for creating mobile applications using
-                                Angular, React and Vuejs</p>
-                        </span>
-                    </h4>
-                    <h4 class="skill skill-8">AWS
-                        <span class="tooltiptext">
-                            <h5>AWS</h5>
-                            <p class="mt-3">AWS is a cloud hosting service created by Amazon.</p>
-                        </span>
-                    </h4>
-                    <h4 class="skill skill-9">PostgresSQL
-                        <span class="tooltiptext">
-                            <h5>PostgresSQL</h5>
-                            <p class="mt-3">PostgresSQL is an open source Database Management System used for
-                                interacting with database using the SQL Language</p>
-                        </span>
-                    </h4>
-                    <h4 class="skill skill-11">Python
-                        <span class="tooltiptext">
-                            <h5>Python</h5>
-                            <p class="mt-3">Python is an interpreted high-level general-purpose programming language.
-                            </p>
-                        </span>
-                    </h4>
-                    <h4 class="skill skill-14">Kotlin
-                        <span class="tooltiptext">
-                            <h5>Kotlin</h5>
-                            <p class="mt-3">Kotlin, is a programming language that is
-                                one of the core technologies of the Android and Cross Platform Software development.</p>
-                        </span>
-                    </h4>
-                    <h4 class="skill skill-14">Nestjs
-                        <span class="tooltiptext">
-                            <h5>Nestjs</h5>
-                            <p class="mt-3">A progressive Node.js framework for building efficient, reliable and
-                                scalable server-side applications.</p>
-                        </span>
-                    </h4>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer></footer>
-    <script src="./assets/js/about.js"></script>
-    <script src="./assets/js/anime.min.js"></script>
-    <script>
 
-        anime({
-            targets: '.main',
-            scale: [
-                { value: .1, easing: 'easeOutSine', duration: 500 },
-                { value: 1, easing: 'easeInOutQuad', duration: 1200 }
-            ],
-            delay: anime.stagger(10, { grid: [14, 5], from: 'center' })
-        });
+<nav>
+  <div class="wrap">
+    <div class="logo">A<span class="ticker">/</span>JAMES</div>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-status"><span class="dot"></span> BUILDING</div>
+  </div>
+</nav>
 
-        anime({
-            targets: '.skills',
-            scale: [
-                { value: .1, easing: 'easeOutSine', duration: 500 },
-                { value: 1, easing: 'easeInOutQuad', duration: 1200 }
-            ],
-            delay: anime.stagger(10, { grid: [14, 5], from: 'center' })
-        });
+<header class="hero">
+  <div class="wrap">
+    <div class="ledger-id">ENTRY NO. 0001 — LAGOS, NIGERIA</div>
+    <h1>Abraham James<br>builds <span class="accent">shippable</span> software.</h1>
+    <p class="role">Full stack engineer with <b>5+ years</b> across fintech, e-commerce, and B2B SaaS — now <b>founder</b> of Biztack and Sharpdine, two live products serving African entrepreneurs.</p>
 
-        anime({
-            targets: '.side_menu-item',
-            scale: [
-                { value: .1, easing: 'easeOutSine', duration: 500 },
-                { value: 1, easing: 'easeInOutQuad', duration: 1200 }
-            ],
-            delay: anime.stagger(100, { grid: [14, 5], from: 'center' })
-        });
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="num">160+</div>
+        <div class="label">Biztack users, 3 countries</div>
+      </div>
+      <div class="stat">
+        <div class="num">2</div>
+        <div class="label">products live in market</div>
+      </div>
+      <div class="stat">
+        <div class="num">5yr</div>
+        <div class="label">shipping production code</div>
+      </div>
+    </div>
 
-        // anime({
-        //     targets: '.side_menu-item',
-        //     translateX: 500,
-        //     delay: anime.stagger(100, { direction: 'reverse' })
-        // });
-    </script>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#contact">Get in touch →</a>
+      <a class="btn btn-ghost" href="#projects">View the ledger</a>
+    </div>
+  </div>
+</header>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="tag">// FOUNDER LEDGER</div>
+        <h2>Products I built and shipped</h2>
+      </div>
+      <div class="count">03 entries</div>
+    </div>
+    <p class="lede" style="margin-bottom:40px;">Self-funded, self-shipped, end to end — architecture, payments, and the first paying customer.</p>
+
+    <div class="ledger">
+      <div class="entry">
+        <div class="when mono">2024 —<br>present</div>
+        <div class="body">
+          <h3>Biztack <span class="badge live">LIVE · PAID</span></h3>
+          <div class="sub"><a href="https://biztack.com.ng" target="_blank" rel="noopener" style="border-bottom:1px solid rgba(47,168,154,0.4);">biztack.com.ng ↗</a> — Unified Business OS</div>
+          <p>Consolidated three standalone PWAs — InvoiceNG, BillNG, RetailNG — into one Next.js application on a single Supabase auth and database layer. First paying subscriber converted via Flutterwave.</p>
+          <ul>
+            <li>Tiered access controls, dynamic upgrade prompts, PWA offline caching</li>
+            <li>CSV/PDF export, OTP auth, Levenshtein email-typo correction</li>
+            <li>160+ organic users across Nigeria, UK, and Europe — zero paid marketing</li>
+          </ul>
+        </div>
+        <div class="status"><span class="badge shipped">₦1,888/mo</span></div>
+      </div>
+
+      <div class="entry">
+        <div class="when mono">2024 —<br>present</div>
+        <div class="body">
+          <h3>Sharpdine <span class="badge live">LIVE</span></h3>
+          <div class="sub"><a href="https://www.sharpdine.com" target="_blank" rel="noopener" style="border-bottom:1px solid rgba(47,168,154,0.4);">sharpdine.com ↗</a> — AI-powered Restaurant Operating System</div>
+          <p>Full stack for Lagos dining: marketing site, owner dashboard, and QR-based customer ordering, with an AI assistant for order and operations support.</p>
+          <ul>
+            <li>Sharp AI — Groq Llama 3.3 70B, confirmation-gated action flow</li>
+            <li>Flutterwave billing via Supabase edge function, after diagnosing silent webhook rate-limiting on Vercel</li>
+            <li>FCM push notifications, real-time order toasts, competitive analysis vs. incumbents</li>
+          </ul>
+        </div>
+        <div class="status"><span class="badge shipped">Lagos F&B</span></div>
+      </div>
+
+      <div class="entry">
+        <div class="when mono">2023</div>
+        <div class="body">
+          <h3>Fèsì <span class="badge shipped">SHIPPED</span></h3>
+          <div class="sub">End-to-end encrypted chat app, Android</div>
+          <p>WeChat-style messenger with a NestJS + Socket.io + Redis backend, dual-key ECDH encryption, and Redis-enforced single-session login.</p>
+        </div>
+        <div class="status"><span class="badge shipped">Android</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="tag">// EMPLOYMENT RECORD</div>
+        <h2>Where I've shipped for others</h2>
+      </div>
+      <div class="count">04 roles</div>
+    </div>
+
+    <div class="ledger">
+      <div class="exp-row">
+        <div class="dates">Aug 2025 – Jan 2026</div>
+        <div>
+          <div class="role">Senior Frontend Engineer</div>
+          <div class="co">Gasco LTD</div>
+          <p>Built the Gasco-ngv CNG gas procurement application on Next.js and React Native. Reusable component library cut future feature delivery time 30%.</p>
+        </div>
+      </div>
+      <div class="exp-row">
+        <div class="dates">Apr 2025 – Sep 2025</div>
+        <div>
+          <div class="role">Senior Frontend Engineer</div>
+          <div class="co">Finceptive LTD</div>
+          <p>Built the CASA marketing site and the CASA MFB Admin Dashboard from UI/UX designs, driving cross-team API integration and design consistency.</p>
+        </div>
+      </div>
+      <div class="exp-row">
+        <div class="dates">Sept 2021 – Feb 2025</div>
+        <div>
+          <div class="role">Frontend Engineer</div>
+          <div class="co">Vendease LTD, Lagos</div>
+          <p>Built and maintained the Vendease Marketplace on Angular/RxJS/NgRx. Boosted mobile engagement 90%, cut load times 80%, improved SEO visibility 90%.</p>
+        </div>
+      </div>
+      <div class="exp-row">
+        <div class="dates">Feb 2020 – Aug 2020</div>
+        <div>
+          <div class="role">Junior Web Developer (Contract)</div>
+          <div class="co">Strategy Guru</div>
+          <p>Cut page load time 50%, lifted conversions 30% on optimized landing pages, and led a frontend team to a 95% client-satisfaction delivery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="tag">// STACK</div>
+        <h2>Tools of the trade</h2>
+      </div>
+    </div>
+
+    <div class="skill-grid">
+      <div class="skill-cell">
+        <div class="k">Frontend</div>
+        <div class="v">React, Next.js, Angular, React Native, Tailwind CSS, shadcn/ui, Vue, Nuxt.js</div>
+      </div>
+      <div class="skill-cell">
+        <div class="k">Backend</div>
+        <div class="v">Node.js, NestJS, Spring Boot, Socket.io, REST & webhook integrations</div>
+      </div>
+      <div class="skill-cell">
+        <div class="k">Data & Infra</div>
+        <div class="v">PostgreSQL, Supabase, Firebase, MongoDB, Redis, Docker, AWS, Vercel, Railway</div>
+      </div>
+      <div class="skill-cell">
+        <div class="k">Mobile</div>
+        <div class="v">Jetpack Compose, Flutter, SwiftUI, React Native</div>
+      </div>
+      <div class="skill-cell">
+        <div class="k">Payments & Ops</div>
+        <div class="v">Flutterwave, Git, GitHub Actions, Jira, Lighthouse, Postman</div>
+      </div>
+      <div class="skill-cell">
+        <div class="k">Security</div>
+        <div class="v">Kali Linux, Nmap, BurpSuite — pursuing eCDFP, GCFE/GCFA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="tag mono" style="color:var(--teal); font-size:12px; margin-bottom:16px;">// CLOSING ENTRY</div>
+    <h2>Building something in Lagos?<br>Let's talk.</h2>
+    <p class="grey">Open to senior frontend/full-stack roles, technical co-founder conversations, and freelance builds for African fintech and SaaS products.</p>
+    <div class="foot-links">
+      <a href="mailto:abraham.o.james442@gmail.com">abraham.o.james442@gmail.com</a>
+      <a href="tel:+2348110884901">+234 811 088 4901</a>
+      <a href="https://www.linkedin.com/in/horllymobile/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/Horllymobile" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://biztack.com.ng" target="_blank" rel="noopener">Biztack ↗</a>
+      <a href="https://www.sharpdine.com" target="_blank" rel="noopener">Sharpdine ↗</a>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 ABRAHAM JAMES</span>
+      <span>LAGOS, NG — GMT+1</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveal = document.querySelectorAll('.entry, .exp-row');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  reveal.forEach(el=>io.observe(el));
+</script>
+
 </body>
-
 </html>
